@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=1920 height=1080></canvas>
+      <canvas id="unity-canvas" width=16 height=9></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -32,9 +32,10 @@
       var warningBanner = document.querySelector("#unity-warning");
 
       // Size canvas to fill screen and maintain aspect ratio
-      var targetAspect = (1920 / 1080);
+      var targetAspect = (16 / 9);
       function setSize() {
         var windowAspect = (window.innerWidth / window.innerHeight);
+
         if (windowAspect > targetAspect)
         {
           canvas.height = window.innerHeight;
@@ -45,7 +46,6 @@
           canvas.width = window.innerWidth;
           canvas.height = window.innerWidth / targetAspect;
         }
-
       }
 
       setSize();
@@ -103,6 +103,10 @@
         config.devicePixelRatio = 1;
         unityShowBanner('WebGL builds are not supported on mobile devices.');
       }
+
+      config.devicePixelRatio = 1;
+
+
       loadingBar.style.display = "block";
 
       var script = document.createElement("script");
